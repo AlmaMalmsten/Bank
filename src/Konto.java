@@ -1,23 +1,25 @@
 public class Konto {
-    String owner;
-    int saldo;
-    public Konto(){
-    }
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
+    int balans;
+    Kund owner;
+    Transaktion lastTransaction;
+    public Konto(Kund owner){
         this.owner = owner;
     }
 
+
     public int getSaldo() {
-        return saldo;
+        return balans;
     }
 
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
+    public void setSaldo(int balans) {
+        this.balans = balans;
     }
 
+    public Transaktion getLastTransaction() {
+        return lastTransaction;
+    }
 
+    public void setLastTransaction(Transaktion lastTransaction) {
+        this.lastTransaction = lastTransaction;
+    }
 }

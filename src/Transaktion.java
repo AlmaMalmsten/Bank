@@ -1,15 +1,25 @@
 public class Transaktion {
-    String senasteTransaktion;
+    int saldo;
+    String date;
 
-    public Transaktion(){
-
+    public Transaktion(int saldo, String date){
+        this.saldo = saldo;
+        this.date = date;
     }
 
-    public String getSenasteTransaktion() {
-        return senasteTransaktion;
+    public int getSaldo() {
+        return saldo;
     }
 
-    public void setSenasteTransaktion(String senasteTransaktion) {
-        this.senasteTransaktion = senasteTransaktion;
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
