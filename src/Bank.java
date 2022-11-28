@@ -7,10 +7,10 @@ public class Bank {
     ArrayList<Konto> konton = new ArrayList<Konto>(); //både vanliga och spar
 
 
-    public void creatKund(String name, int personNummer, int kontoNummer){ //fyller arraylist
+    public void creatKund(String name, int personNummer){
         kunder.add(new Kund(name, personNummer));
     }
-    public void creatKonto(Kund owner){ //vanliga
+    public void creatKonto(Kund owner){
         konton.add(new Konto(owner));
     }
     public void creatSparKonto(Kund owner, float intrest){//sparkonto också i kontoarrayn
@@ -33,4 +33,54 @@ public class Bank {
         }
     }
 
-}
+    public void signIn(String name){
+        for (Kund kund : kunder) {
+            if (kund.getNamn() == name) {
+
+            }
+        }
+    }
+
+    public void run(){
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            boolean flag = true;
+            boolean flag2 = true;
+            String haveAcount = "Y";
+            System.out.println("Do you have an acuont?");
+            while (flag)
+            try {
+                haveAcount = scanner.nextLine();
+                flag = false;
+            } catch (Exception e){
+                System.out.println("Must be Y or N");
+            }
+            switch (haveAcount){
+                case "N":
+                    while (flag2) {
+                        try {
+                            System.out.println("Name: ");
+                            String name = scanner.nextLine();
+                            System.out.println("Personnummer: ");
+                            int personnummer = scanner.nextInt();
+                            creatKund(name, personnummer);
+                            for (Kund kund : kunder) {
+                                if (kund.getPersonNummer() == personnummer) {
+                                    creatKonto(kund);
+                                }
+                            }
+                            flag2 = false;
+                        } catch (Exception e) {
+                            System.out.println("Pleace don't");
+                        }
+                        break;
+                    }
+                case "Y":
+                    System.out.println("name: ");
+                    String name = scanner.nextLine();
+
+
+                }
+            }
+        }
+    }

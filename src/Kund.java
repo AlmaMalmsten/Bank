@@ -1,6 +1,6 @@
 public class Kund {
     String namn;
-    int personNummer; //svengelska nice
+    int personNummer; //svengelska nice, remember to change, english only
 
     public Kund(String namn, int personNummer)//möjligen ändra till kontonummer = konto
     {
