@@ -1,7 +1,7 @@
 public class Konto {
     int balans;
-    Kund owner;
-    Transaktion lastTransaction;
+    Kund owner; //konto kopplat till kund, bättre än tvärtom
+    Transaktion lastTransaction;//koppla till transaktionklassen
     public Konto(Kund owner){
         this.owner = owner;
     }

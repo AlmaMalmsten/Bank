@@ -1,6 +1,6 @@
 public class Transaktion {
     int saldo;
-    String date;
+    String date;//används inte? Kanske sen, bra att ha ändå
 
     public Transaktion(int saldo, String date){
         this.saldo = saldo;

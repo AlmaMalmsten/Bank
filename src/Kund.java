@@ -1,10 +1,9 @@
 public class Kund {
     String namn;
-    int personNummer;
-    int kontoNummer;
+    int personNummer; //svengelska nice
 
-    public Kund(String namn, int personNummer, int kontoNummer){
-        this.kontoNummer = kontoNummer;
+    public Kund(String namn, int personNummer)//möjligen ändra till kontonummer = konto
+    {
         this.namn = namn;
         this.personNummer = personNummer;
     }
@@ -23,13 +22,5 @@ public class Kund {
 
     public void setPersonNummer(int personNummer) {
         this.personNummer = personNummer;
-    }
-
-    public int getKontoNummer() {
-        return kontoNummer;
-    }
-
-    public void setKontoNummer(int kontoNummer) {
-        this.kontoNummer = kontoNummer;
     }
 }

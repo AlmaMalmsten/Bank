@@ -1,5 +1,6 @@
-public class Sparkonto extends Konto{
-    float intrest;
+public class Sparkonto extends Konto //sub till konto
+{
+    float intrest; //ända skillnaden, kanske lägg till något?
 
     public Sparkonto(Kund owner, float intrest){
         super(owner);
