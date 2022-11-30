@@ -7,10 +7,10 @@ public class Bank {
     ArrayList<Konto> konton = new ArrayList<Konto>(); //både vanliga och spar
 
 
-    public void creatKund(String name, int personNummer){
+    private void creatKund(String name, int personNummer){
         kunder.add(new Kund(name, personNummer));
     }
-    public void creatKonto(Kund owner){
+    private void creatKonto(Kund owner){
         konton.add(new Konto(owner));
     }
     private void creatSparKonto(Kund owner, float intrest){//sparkonto också i kontoarrayn
@@ -33,7 +33,7 @@ public class Bank {
         }
     }
 
-    public void signIn(String name){
+    private void signIn(String name){ //signina duh
         for (Kund kund : kunder) {
             if (kund.getNamn() == name) {
 
@@ -45,10 +45,10 @@ public class Bank {
         String name = "";
         boolean flag = true;
         Scanner scanner = new Scanner(System.in);
-        while (flag) {
+        while (flag) { //håller på tills avslutad
             boolean flag1 = true;
             boolean flag2 = true;
-            String haveAcount = "Y";
+            String haveAcount = "Y"; //för både acount och kund
             System.out.println("Are you a costumer?");
             while (flag1) {
                 try {
@@ -57,7 +57,7 @@ public class Bank {
                 } catch (Exception e) {
                     System.out.println("Must be Y or N");
                 }
-                switch (haveAcount) {
+                switch (haveAcount) {//switch för logga in/ skapa kund
                     case "N":
                         while (flag2) {
                             try {
@@ -65,26 +65,26 @@ public class Bank {
                                 name = scanner.nextLine();
                                 System.out.println("Personnummer: ");
                                 int personnummer = scanner.nextInt();
-                                creatKund(name, personnummer);
-                                for (Kund kund : kunder) {
+                                creatKund(name, personnummer);//skapar kund
+                                for (Kund kund : kunder) {//går säkert att optimera. Skapar konto till ny kund
                                     if (kund.getPersonNummer() == personnummer) {
                                         creatKonto(kund);
                                         signIn(name);
                                     }
                                 }
-                                flag2 = false;
+                                flag2 = false; // breakar while runt try catch
                             } catch (Exception e) {
                                 System.out.println("Pleace don't");
                             }
                             break;
                         }
                     case "Y":
-                        System.out.println("name: ");
+                        System.out.println("name: "); //needs try catch but not today
                         name = scanner.nextLine();
                         signIn(name);
                 }
-                System.out.println("Creat acount?");
-                haveAcount = scanner.nextLine();
+                System.out.println("Creat acount?"); //frågar alla oavsätt om de är kunder eller inte
+                haveAcount = scanner.nextLine();//haveAcount declarad utanför så inte samma som höre upp
                 switch (haveAcount) {
                     case "Y":
                         for (Kund kund : kunder) {
@@ -93,7 +93,7 @@ public class Bank {
                             }
                         }
                     case "N":
-                        flag = false;
+                        flag = false; //breakar hela. Varför jag ville det vet jag inte.
                 }
             }
         }
