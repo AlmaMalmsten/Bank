@@ -43,16 +43,17 @@ public class Bank {
 
     public void run(){
         String name = "";
+        boolean flag = true;
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            boolean flag = true;
+        while (flag) {
+            boolean flag1 = true;
             boolean flag2 = true;
             String haveAcount = "Y";
             System.out.println("Are you a costumer?");
-            while (flag) {
+            while (flag1) {
                 try {
                     haveAcount = scanner.nextLine();
-                    flag = false;
+                    flag1 = false;
                 } catch (Exception e) {
                     System.out.println("Must be Y or N");
                 }
