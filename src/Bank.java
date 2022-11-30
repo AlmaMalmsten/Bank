@@ -13,11 +13,11 @@ public class Bank {
     public void creatKonto(Kund owner){
         konton.add(new Konto(owner));
     }
-    public void creatSparKonto(Kund owner, float intrest){//sparkonto också i kontoarrayn
+    private void creatSparKonto(Kund owner, float intrest){//sparkonto också i kontoarrayn
         konton.add(new Sparkonto(owner, intrest));
     }
 
-    public void allKund(){//beräknar antal kunder + slriver ut dem
+    private void allKund(){//beräknar antal kunder + slriver ut dem
         int numberOf = kunder.size();
         kunder.forEach(kund -> {
             System.out.println(kund.getNamn());
@@ -26,7 +26,7 @@ public class Bank {
         });
     }
 
-    public void allBalans(){ //same but balans
+    private void allBalans(){ //same but balans
         int allTheMoney = 0;
         for (Konto konto : konton){
             allTheMoney += konto.getSaldo();
@@ -42,45 +42,59 @@ public class Bank {
     }
 
     public void run(){
+        String name = "";
         Scanner scanner = new Scanner(System.in);
         while (true) {
             boolean flag = true;
             boolean flag2 = true;
             String haveAcount = "Y";
-            System.out.println("Do you have an acuont?");
-            while (flag)
-            try {
-                haveAcount = scanner.nextLine();
-                flag = false;
-            } catch (Exception e){
-                System.out.println("Must be Y or N");
-            }
-            switch (haveAcount){
-                case "N":
-                    while (flag2) {
-                        try {
-                            System.out.println("Name: ");
-                            String name = scanner.nextLine();
-                            System.out.println("Personnummer: ");
-                            int personnummer = scanner.nextInt();
-                            creatKund(name, personnummer);
-                            for (Kund kund : kunder) {
-                                if (kund.getPersonNummer() == personnummer) {
-                                    creatKonto(kund);
+            System.out.println("Are you a costumer?");
+            while (flag) {
+                try {
+                    haveAcount = scanner.nextLine();
+                    flag = false;
+                } catch (Exception e) {
+                    System.out.println("Must be Y or N");
+                }
+                switch (haveAcount) {
+                    case "N":
+                        while (flag2) {
+                            try {
+                                System.out.println("Name: ");
+                                name = scanner.nextLine();
+                                System.out.println("Personnummer: ");
+                                int personnummer = scanner.nextInt();
+                                creatKund(name, personnummer);
+                                for (Kund kund : kunder) {
+                                    if (kund.getPersonNummer() == personnummer) {
+                                        creatKonto(kund);
+                                        signIn(name);
+                                    }
                                 }
+                                flag2 = false;
+                            } catch (Exception e) {
+                                System.out.println("Pleace don't");
                             }
-                            flag2 = false;
-                        } catch (Exception e) {
-                            System.out.println("Pleace don't");
+                            break;
                         }
-                        break;
-                    }
-                case "Y":
-                    System.out.println("name: ");
-                    String name = scanner.nextLine();
-
-
+                    case "Y":
+                        System.out.println("name: ");
+                        name = scanner.nextLine();
+                        signIn(name);
+                }
+                System.out.println("Creat acount?");
+                haveAcount = scanner.nextLine();
+                switch (haveAcount) {
+                    case "Y":
+                        for (Kund kund : kunder) {
+                            if (kund.getNamn() == name) {
+                                creatKonto(kund);
+                            }
+                        }
+                    case "N":
+                        flag = false;
                 }
             }
+        }
         }
     }
